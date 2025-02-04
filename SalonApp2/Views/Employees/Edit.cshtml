@@ -1,0 +1,29 @@
+@model SalonApp2.Models.Employee
+
+<form method="post" asp-action="Edit">
+    <h2>Edit Employee</h2>
+
+    <!-- Hidden field for EmployeeId -->
+    <input type="hidden" asp-for="EmployeeId" />
+
+    <div class="mb-3">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Specialization">Specialization</label>
+        <input asp-for="Specialization" class="form-control" />
+        <span asp-validation-for="Specialization" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-controller="Employees" asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

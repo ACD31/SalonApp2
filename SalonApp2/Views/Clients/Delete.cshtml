@@ -1,0 +1,32 @@
+@model SalonApp2.Models.Client
+
+<form method="post" asp-action="Delete">
+    <h2>Create Client</h2>
+    
+    <div class="mb-3">
+        <label asp-for="PhoneNum">Phone Number</label>
+        <input asp-for="PhoneNum" class="form-control" />
+        <span asp-validation-for="PhoneNum" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+    <a asp-controller="Clients" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

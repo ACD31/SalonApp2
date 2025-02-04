@@ -1,0 +1,43 @@
+@model SalonApp2.ViewModels.AppointmentViewModel
+
+<h2>Create New Appointment</h2>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- Employee Selection Dropdown -->
+    <div class="mb-3">
+        <label asp-for="Appointment.EmployeeId" class="form-label">Select Employee</label>
+        <select asp-for="Appointment.EmployeeId" asp-items="Model.EmployeeList" class="form-control"></select>
+        <span asp-validation-for="Appointment.EmployeeId" class="text-danger"></span>
+    </div>
+
+    <!-- Date and Time -->
+    <div class="mb-3">
+        <label asp-for="Appointment.DateAndTime" class="form-label">Date and Time</label>
+        <input asp-for="Appointment.DateAndTime" type="datetime-local" class="form-control" />
+        <span asp-validation-for="Appointment.DateAndTime" class="text-danger"></span>
+    </div>
+
+    <!-- Appointment Type -->
+    <div class="mb-3">
+        <label asp-for="Appointment.Type" class="form-label">Appointment Type</label>
+        <input asp-for="Appointment.Type" type="text" class="form-control" />
+        <span asp-validation-for="Appointment.Type" class="text-danger"></span>
+    </div>
+
+    <!-- Client Phone Number -->
+    <div class="form-group">
+        <label asp-for="Appointment.PhoneNum" class="control-label">Client Phone Number</label>
+        <input asp-for="Appointment.PhoneNum" class="form-control" />
+        <span asp-validation-for="Appointment.PhoneNum" class="text-danger"></span>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-controller="Appointments" asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Client>
+
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<h1>Clients</h1>
+
+<a asp-controller="Clients" asp-action="Create" class="btn btn-primary mb-3">
+    Create New Client
+</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>PhoneNum</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Number of Appointments</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>@obj.PhoneNum</td>
+                <td>@obj.Name</td>
+                <td>@obj.Email</td>
+                <td>
+                    @if (obj.Appointments != null && obj.Appointments.Any())
+                    {
+                        <div>@obj.Appointments.Count()</div>
+                    }
+                    else
+                    {
+                        <div>No Appointments</div>
+                    }
+                </td>
+                
+                <td>
+                    @if (!string.IsNullOrEmpty(obj.Image))
+                    {
+                        <img src="@obj.Image" alt="Client Image" style="width: 50px; height: 50px;" />
+                    }
+                    else
+                    {
+                        <div>No Image</div>
+                    }
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-controller="Clients" asp-action="Edit" asp-route-id="@obj.PhoneNum" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Clients" asp-action="Delete" asp-route-id="@obj.PhoneNum" class="btn btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

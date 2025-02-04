@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SalonApp2.Models.Employee>
+
+<h2>Employees</h2>
+
+<a asp-controller="Employees" asp-action="Create" class="btn btn-primary">
+    Create new employee
+</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+         <tr>
+            <td width="50%">
+                @obj.EmployeeId
+            </td>
+            <td width="30%">
+                @obj.Name
+            </td>
+            <td width="30%">
+                @obj.Specialization
+            </td>
+             <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Employees" asp-action="Edit" asp-route-id="@obj.EmployeeId" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Employees" asp-action="Delete" asp-route-id="@obj.EmployeeId" class="btn btn-danger">Delete</a>
+                    </div>
+             </td>
+        </tr>
+        }
+    </tbody>
+</table>
